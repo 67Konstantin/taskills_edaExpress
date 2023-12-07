@@ -39,6 +39,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const NewPageScreen(),
       );
     },
+    ShopingRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ShopingScreen(),
+      );
+    },
     SignInRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -106,6 +112,20 @@ class NewPageRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'NewPageRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ShopingScreen]
+class ShopingRoute extends PageRouteInfo<void> {
+  const ShopingRoute({List<PageRouteInfo>? children})
+      : super(
+          ShopingRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ShopingRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

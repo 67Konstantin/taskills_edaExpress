@@ -40,5 +40,10 @@ class AppRouter extends _$AppRouter {
           initial: false,
           path: '/brand',
         ),
+        AutoRoute(
+          page: ShopingRoute.page,
+          initial: false,
+          path: '/shoping_basket',
+        ),
       ];
 }
