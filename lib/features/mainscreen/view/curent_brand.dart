@@ -2,6 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:taskills_qualification/help_classes/exports.dart';
 
+
+import '../../../help_classes/exports.dart';
+import '../../../router/app_router.dart';
+
 @RoutePage()
 class CurrentBrandScreen extends StatefulWidget{
   @override
@@ -56,7 +60,7 @@ class CurrentBrandScreenState extends State<CurrentBrandScreen> with TickerProvi
                           onTap: (){
                                   MyVariables().basketName.add(MyVariables().foodName);
                                   MyVariables().basketPrice.add(MyVariables().foodPrice);
-                                  AutoRouter.of(context).push(ShopingScreenRoute());
+                                  AutoRouter.of(context).push(ShopingRoute());
                                 },
                         );
                       }),
@@ -73,7 +77,7 @@ class CurrentBrandScreenState extends State<CurrentBrandScreen> with TickerProvi
                           onTap: (){
                                   MyVariables().basketName.add(MyVariables().drinkName);
                                   MyVariables().basketPrice.add(MyVariables().drinkPrice);
-                                  AutoRouter.of(context).push(ShopingScreenRoute());
+                                  AutoRouter.of(context).push(ShopingRoute());
                                 },
                         );
                       })
