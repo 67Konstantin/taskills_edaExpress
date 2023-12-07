@@ -19,13 +19,7 @@ class MyBody extends StatefulWidget {
 
 class MyBodyState extends State<MyBody> with TickerProviderStateMixin{
 
-  final List restaurants = ["Выпечка Экспресс"];
-  final List shops = [];
-  final restImg = ["assets/images/logo.jpg"];
-  final shopImg = [];
   int index = 0;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -151,18 +145,6 @@ class CurrentBrand extends StatefulWidget{
 
 class CurrentBrandState extends State<CurrentBrand> with TickerProviderStateMixin{
 
-  final List foodName = ["Ватрушка", "Слойка с вишней", "Сосика в тесте",
-                       "Паровка", "Пицца", "Беляш", "Пирожок с картошкой"];
-  final List foodImages = ["assets/images/vatrushka.jpg", "assets/images/cherry.jpg",
-                          "assets/images/sausage.jpg", "assets/images/steam.jpg",
-                          "assets/images/pizza.jpg", "assets/images/belyash.jpg",
-                          "assets/images/pie.jpg"];
-  final List foodPrice = ["60 руб", "60 руб", "65 руб", "85 руб", "87 руб", "70 руб", "55 руб"];
-
-  final List drinkName = ["Чай чёрный", "Морс клюквенный", "Чай зелёный"];
-  final List drinkImages = ["assets/images/teaBlack.jpg", "assets/images/morse.jpg", 
-                            "assets/images/teaGreen.jpg"];
-  final List drinkPrice = ["30 руб", "70 руб", "35 руб"];
   int index = 0;
 
   @override
