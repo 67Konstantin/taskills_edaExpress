@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+
+import '../../../help_classes/exports.dart';
+import '../../../router/app_router.dart';
+
 @RoutePage()
 class ShopingScreen extends StatefulWidget {
   const ShopingScreen({Key? key}) : super(key: key);
@@ -15,7 +19,7 @@ class _ShopingScreenState extends State<ShopingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 2, vsync: this);
+    //TabController _tabController = TabController(length: 2, vsync: this);
     return Scaffold(
       appBar: AppBar(title: const Text('Корзина')),
       body: Center(
@@ -23,7 +27,7 @@ class _ShopingScreenState extends State<ShopingScreen> {
           children: [
             Container(
               width: double.maxFinite,
-              height: foodName.length * 60,
+              height: MyVariables().basketName.length * 60,
               child: ListView.builder(
                     //physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
@@ -31,7 +35,7 @@ class _ShopingScreenState extends State<ShopingScreen> {
                       itemBuilder: (context,index){
                         return  ListTile(
                           title: Text('${MyVariables().basketName[index]}'),
-                          leading: Image.asset(foodImages[index], height: 40, width: 40,),
+                          //leading: Image.asset(foodImages[index], height: 40, width: 40,),
                           subtitle: Text(MyVariables().basketPrice[index]),
                           isThreeLine: true,
                         );
