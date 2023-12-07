@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:taskills_qualification/help_classes/exports.dart';
 import 'package:taskills_qualification/router/app_router.dart';
 
 @RoutePage()
@@ -35,19 +36,20 @@ class MarketsScreenState extends State<MarketsScreen>
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Flexible(
-                    child: SizedBox(
-                      height: 200,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: restImg.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (_, index) {
-                          return Container(
-                            height: 200,
-                            width: 200,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(restImg[index]),
+                      child: SizedBox(
+                        height: 200,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: MyVariables.restImg.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (_, index){
+                            return Container(
+                              height: 200,
+                              width: 200,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(MyVariables.restImg[index]),
+                                ),
                               ),
                             ),
                           );
@@ -74,44 +76,39 @@ class MarketsScreenState extends State<MarketsScreen>
                   ),
                   Container(
                     width: double.maxFinite,
-                    height: restaurants.length * 60,
+                    height: MyVariables.restaurants.length * 70,
                     child: TabBarView(
                       controller: _tabController,
                       children: [
                         ListView.builder(
                             //physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
-                            itemCount: restaurants.length,
-                            itemBuilder: (context, index) {
-                              return ListTile(
-                                onTap: () {
-                                  AutoRouter.of(context)
-                                      .push(CurrentBrandRoute());Zz
+                            itemCount: MyVariables.restaurants.length,
+                            itemBuilder: (context,index){
+                              return  ListTile(
+                                onTap: (){
+                                  AutoRouter.of(context).push(CurrentBrandRoute());
                                 },
-                                title: Text('${restaurants[index]}'),
-                                leading: Image.asset(restImg[index],
-                                    height: 70, width: 70),
-                                trailing: Icon(
-                                  Icons.arrow_forward_ios_sharp,
-                                ),
+                                title: Text('${MyVariables.restaurants[index]}'),
+                                leading: Image.asset(MyVariables.restImg[index], height:70, width:70),
+                                
+                                trailing: Icon(Icons.arrow_forward_ios_sharp,),
                                 isThreeLine: false,
                               );
                             }),
                         ListView.builder(
                             //physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
-                            itemCount: shops.length,
-                            itemBuilder: (context, index) {
-                              return ListTile(
-                                onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => CurrentBrand()));
+                            itemCount: MyVariables.shops.length,
+                            itemBuilder: (context,index){
+                              return  ListTile(
+                                onTap: (){
+                                  AutoRouter.of(context).push(CurrentBrandRoute());
                                 },
-                                title: Text('${shops[index]}'),
-                                leading: Image.asset(shopImg[index]),
-                                trailing: Icon(
-                                  Icons.arrow_forward_ios_sharp,
-                                ),
+                                title: Text('${MyVariables.shops[index]}'),
+                                leading: Image.asset(MyVariables.shopImg[index]),
+                              
+                                trailing: Icon(Icons.arrow_forward_ios_sharp,),
                                 isThreeLine: false,
                               );
                             })
