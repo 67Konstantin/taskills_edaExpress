@@ -42,7 +42,7 @@ class MarketsScreenState extends State<MarketsScreen>
                         height: 200,
                         child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: restImg.length,
+                          itemCount: MyVariables.restImg.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (_, index){
                             return Container(
@@ -50,7 +50,7 @@ class MarketsScreenState extends State<MarketsScreen>
                               width: 200,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage(restImg[index]),
+                                  image: AssetImage(MyVariables.restImg[index]),
                                 ),
                               ),
                             );
@@ -77,23 +77,21 @@ class MarketsScreenState extends State<MarketsScreen>
                   ),
                   Container(
                     width: double.maxFinite,
-                    height: restaurants.length * 60,
+                    height: MyVariables.restaurants.length * 70,
                     child: TabBarView(
                       controller: _tabController,
                       children: [
                         ListView.builder(
                           //physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
-                            itemCount: restaurants.length,
+                            itemCount: MyVariables.restaurants.length,
                             itemBuilder: (context,index){
                               return  ListTile(
                                 onTap: (){
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder:
-                                          (context) => CurrentBrand()));
+                                  AutoRouter.of(context).push(CurrentBrandRoute());
                                 },
-                                title: Text('${restaurants[index]}'),
-                                leading: Image.asset(restImg[index], height:70, width:70),
+                                title: Text('${MyVariables.restaurants[index]}'),
+                                leading: Image.asset(MyVariables.restImg[index], height:70, width:70),
                                 
                                 trailing: Icon(Icons.arrow_forward_ios_sharp,),
                                 isThreeLine: false,
@@ -102,14 +100,14 @@ class MarketsScreenState extends State<MarketsScreen>
                         ListView.builder(
                           //physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
-                            itemCount: shops.length,
+                            itemCount: MyVariables.shops.length,
                             itemBuilder: (context,index){
                               return  ListTile(
                                 onTap: (){
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => CurrentBrand()));
+                                  AutoRouter.of(context).push(CurrentBrandRoute());
                                 },
-                                title: Text('${shops[index]}'),
-                                leading: Image.asset(shopImg[index]),
+                                title: Text('${MyVariables.shops[index]}'),
+                                leading: Image.asset(MyVariables.shopImg[index]),
                               
                                 trailing: Icon(Icons.arrow_forward_ios_sharp,),
                                 isThreeLine: false,
