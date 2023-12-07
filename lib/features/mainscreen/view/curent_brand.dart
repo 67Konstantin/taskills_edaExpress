@@ -38,31 +38,31 @@ class CurrentBrandScreenState extends State<CurrentBrandScreen> with TickerProvi
             ),
             Container(
               width: double.maxFinite,
-              height: foodName.length * 60,
+              height: MyVariables.foodName.length * 60,
               child: TabBarView(
                 controller: _tabController,
                 children: [
                   ListView.builder(
                     //physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: foodName.length,
+                      itemCount: MyVariables.foodName.length,
                       itemBuilder: (context,index){
                         return  ListTile(
-                          title: Text('${foodName[index]}'),
-                          leading: Image.asset(foodImages[index], height: 40, width: 40,),
-                          subtitle: Text(foodPrice[index]),
+                          title: Text('${MyVariables.foodName[index]}'),
+                          leading: Image.asset(MyVariables.foodImages[index], height: 40, width: 40,),
+                          subtitle: Text(MyVariables.foodPrice[index]),
                           isThreeLine: true,
                         );
                       }),
                   ListView.builder(
                     //physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: drinkName.length,
+                      itemCount: MyVariables.drinkName.length,
                       itemBuilder: (context,index){
                         return  ListTile(
-                          title: Text('${drinkName[index]}'),
-                          leading: Image.asset(drinkImages[index], height: 40, width: 40,),
-                          subtitle: Text(drinkPrice[index]),
+                          title: Text('${MyVariables.drinkName[index]}'),
+                          leading: Image.asset(MyVariables.drinkImages[index], height: 40, width: 40,),
+                          subtitle: Text(MyVariables.drinkPrice[index]),
                           isThreeLine: true,
                         );
                       })
