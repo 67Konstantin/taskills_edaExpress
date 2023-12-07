@@ -30,4 +30,6 @@ class MyVariables {
   final List drinkImages = ["assets/png/teaBlack.jpg", "assets/png/morse.jpg", 
                             "assets/png/teaGreen.jpg"];
   final List drinkPrice = ["30 руб", "70 руб", "35 руб"];
+  final List basketName = [];
+  final List basketPrice = [];
 }
