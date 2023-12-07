@@ -10,11 +10,37 @@ class ShopingScreen extends StatefulWidget {
 }
 
 class _ShopingScreenState extends State<ShopingScreen> {
+
+  int index = 0;
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.amber,
-      body: Text('Привет'),
+    TabController _tabController = TabController(length: 2, vsync: this);
+    return Scaffold(
+      appBar: AppBar(title: const Text('Корзина')),
+      body: Center(
+        child: ListView(
+          children: [
+            Container(
+              width: double.maxFinite,
+              height: foodName.length * 60,
+              child: ListView.builder(
+                    //physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: MyVariables().basketName.length,
+                      itemBuilder: (context,index){
+                        return  ListTile(
+                          title: Text('${MyVariables().basketName[index]}'),
+                          leading: Image.asset(foodImages[index], height: 40, width: 40,),
+                          subtitle: Text(MyVariables().basketPrice[index]),
+                          isThreeLine: true,
+                        );
+                      }),
+            ),
+
+          ],
+        )
+      ),
     );
   }
 }
