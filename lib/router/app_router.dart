@@ -38,7 +38,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: CurrentBrandRoute.page,
           initial: false,
-          path: '/brand',
+          path: '/currentBrand/:shopName',
         ),
         AutoRoute(
           page: ShopingRoute.page,

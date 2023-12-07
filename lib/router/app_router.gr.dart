@@ -22,9 +22,12 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     CurrentBrandRoute.name: (routeData) {
+      final args = routeData.argsAs<CurrentBrandRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: CurrentBrandScreen(),
+        child: CurrentBrandScreen(
+          shopName: args.shopName,
+        ),
       );
     },
     MarketsRoute.name: (routeData) {
@@ -76,16 +79,36 @@ class AccountRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CurrentBrandScreen]
-class CurrentBrandRoute extends PageRouteInfo<void> {
-  const CurrentBrandRoute({List<PageRouteInfo>? children})
-      : super(
+class CurrentBrandRoute extends PageRouteInfo<CurrentBrandRouteArgs> {
+  CurrentBrandRoute({
+    required String shopName,
+    List<PageRouteInfo>? children,
+  }) : super(
           CurrentBrandRoute.name,
+          args: CurrentBrandRouteArgs(
+            shopName: shopName,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CurrentBrandRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CurrentBrandRouteArgs> page =
+      PageInfo<CurrentBrandRouteArgs>(name);
+}
+
+class CurrentBrandRouteArgs {
+  const CurrentBrandRouteArgs({
+    required this.shopName,
+  });
+
+  final String shopName;
+
+
+  @override
+  String toString() {
+    return 'CurrentBrandRouteArgs{shopName: $shopName}';
+  }
 }
 
 /// generated route for

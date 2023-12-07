@@ -3,22 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:taskills_qualification/help_classes/exports.dart';
 
 @RoutePage()
-class CurrentBrandScreen extends StatefulWidget{
+class CurrentBrandScreen extends StatefulWidget {
+  final String shopName;
+
+  CurrentBrandScreen({required this.shopName});
+
   @override
   createState() => new CurrentBrandScreenState();
 }
 
-class CurrentBrandScreenState extends State<CurrentBrandScreen> with TickerProviderStateMixin{
+class CurrentBrandScreenState extends State<CurrentBrandScreen>
+    with TickerProviderStateMixin {
+  TabController? _tabController;
 
-  int index = 0;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 2, vsync: this);
     return Scaffold(
-      appBar: AppBar(title: const Text('Ассортимент')),
+      appBar: AppBar(title: Text('${widget.shopName} Ассортимент')),
       body: Center(
-        child: ListView(
+        child: Column(
           children: [
             Container(
               child: TabBar(
@@ -28,52 +43,55 @@ class CurrentBrandScreenState extends State<CurrentBrandScreen> with TickerProvi
                 tabs: [
                   Tab(
                     text: "Выпечка",
-                    //icon: Icon(Icons.home),
                   ),
                   Tab(
                     text: "Напитки",
-                    //icon: Icon(Icons.account_box),
                   ),
                 ],
               ),
             ),
-            Container(
-              width: double.maxFinite,
-              height: MyVariables().foodName.length * 60,
+            Expanded(
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  ListView.builder(
-                    //physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: MyVariables().foodName.length,
-                      itemBuilder: (context,index){
-                        return  ListTile(
-                          title: Text('${MyVariables().foodName[index]}'),
-                          leading: Image.asset(MyVariables().foodImages[index], height: 40, width: 40,),
-                          subtitle: Text(MyVariables().foodPrice[index]),
-                          isThreeLine: true,
-                        );
-                      }),
-                  ListView.builder(
-                    //physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: MyVariables().drinkName.length,
-                      itemBuilder: (context,index){
-                        return  ListTile(
-                          title: Text('${MyVariables().drinkName[index]}'),
-                          leading: Image.asset(MyVariables().drinkImages[index], height: 40, width: 40,),
-                          subtitle: Text(MyVariables().drinkPrice[index]),
-                          isThreeLine: true,
-                        );
-                      })
+                  _buildItemList(MyVariables().shopItemsMap[widget.shopName]?["foodNames"] ?? []),
+                  _buildItemList(MyVariables().shopItemsMap[widget.shopName]?["drinkNames"] ?? []),
                 ],
               ),
             ),
-
           ],
-        )
+        ),
       ),
     );
+  }
+
+  Widget _buildItemList(List<String> items) {
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(items[index]),
+          leading: Image.asset(
+            _getImage(widget.shopName, index),
+            height: 40,
+            width: 40,
+          ),
+          subtitle: Text(_getPrice(widget.shopName, index)),
+          isThreeLine: true,
+        );
+      },
+    );
+  }
+
+  String _getImage(String shopName, int index) {
+    String type = _tabController?.index == 0 ? "food" : "drink";
+    return MyVariables().shopItemsMap[widget.shopName]?["${type}Images"]?[index] ??
+        MyVariables().defaultFoodImage;
+  }
+
+  String _getPrice(String shopName, int index) {
+    String type = _tabController?.index == 0 ? "food" : "drink";
+    return MyVariables().shopItemsMap[widget.shopName]?["${type}Prices"]?[index] ??
+        MyVariables().defaultFoodPrice;
   }
 }
