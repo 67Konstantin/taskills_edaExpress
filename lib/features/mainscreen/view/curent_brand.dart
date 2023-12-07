@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:taskills_qualification/help_classes/exports.dart';
 
 @RoutePage()
 class CurrentBrandScreen extends StatefulWidget{
@@ -38,31 +39,31 @@ class CurrentBrandScreenState extends State<CurrentBrandScreen> with TickerProvi
             ),
             Container(
               width: double.maxFinite,
-              height: MyVariables.foodName.length * 60,
+              height: MyVariables().foodName.length * 60,
               child: TabBarView(
                 controller: _tabController,
                 children: [
                   ListView.builder(
                     //physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: MyVariables.foodName.length,
+                      itemCount: MyVariables().foodName.length,
                       itemBuilder: (context,index){
                         return  ListTile(
-                          title: Text('${MyVariables.foodName[index]}'),
-                          leading: Image.asset(MyVariables.foodImages[index], height: 40, width: 40,),
-                          subtitle: Text(MyVariables.foodPrice[index]),
+                          title: Text('${MyVariables().foodName[index]}'),
+                          leading: Image.asset(MyVariables().foodImages[index], height: 40, width: 40,),
+                          subtitle: Text(MyVariables().foodPrice[index]),
                           isThreeLine: true,
                         );
                       }),
                   ListView.builder(
                     //physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: MyVariables.drinkName.length,
+                      itemCount: MyVariables().drinkName.length,
                       itemBuilder: (context,index){
                         return  ListTile(
-                          title: Text('${MyVariables.drinkName[index]}'),
-                          leading: Image.asset(MyVariables.drinkImages[index], height: 40, width: 40,),
-                          subtitle: Text(MyVariables.drinkPrice[index]),
+                          title: Text('${MyVariables().drinkName[index]}'),
+                          leading: Image.asset(MyVariables().drinkImages[index], height: 40, width: 40,),
+                          subtitle: Text(MyVariables().drinkPrice[index]),
                           isThreeLine: true,
                         );
                       })
