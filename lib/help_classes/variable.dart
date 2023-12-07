@@ -150,4 +150,8 @@ class MyVariables {
   String get defaultFoodPrice => "0 руб";
   String get defaultDrinkImage => "assets/default_drink_image.jpg";
   String get defaultDrinkPrice => "0 руб";
+
+
+  final List basketName = [];
+  final List basketPrice = [];
 }
