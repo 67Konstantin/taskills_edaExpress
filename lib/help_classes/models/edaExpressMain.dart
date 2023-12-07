@@ -213,7 +213,7 @@ class CurrentBrandState extends State<CurrentBrand> with TickerProviderStateMixi
                         return  ListTile(
                           title: Text('${drinkName[index]}'),
                           leading: Image.asset(drinkImages[index], height: 40, width: 40,),
-                          subtitle: drinkPrice[index],
+                          subtitle: Text(drinkPrice[index]),
                           isThreeLine: true,
                         );
                       })
