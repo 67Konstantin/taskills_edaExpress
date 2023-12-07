@@ -13,7 +13,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: NewPageRoute.page,
           initial: false,
-          path: '/sign123',
+          path: '/lol',
         ),
         AutoRoute(
           page: AccountRoute.page,
