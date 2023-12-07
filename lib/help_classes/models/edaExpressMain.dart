@@ -19,7 +19,10 @@ class MyBody extends StatefulWidget {
 
 class MyBodyState extends State<MyBody> with TickerProviderStateMixin{
 
-  final List _array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  final List restaurants = ["Выпечка Экспресс"];
+  final List shops = [];
+  final restImg = ["assets/images/logo.jpg"];
+  final shopImg = [];
   int index = 0;
 
 
@@ -54,7 +57,7 @@ class MyBodyState extends State<MyBody> with TickerProviderStateMixin{
                         height: 200,
                         child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: 4,
+                          itemCount: restImg.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (_, index){
                             return Container(
@@ -62,7 +65,7 @@ class MyBodyState extends State<MyBody> with TickerProviderStateMixin{
                               width: 200,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage("assets/images/2.jpg"),
+                                  image: AssetImage(restImg[index]),
                                 ),
                               ),
                             );
@@ -89,14 +92,14 @@ class MyBodyState extends State<MyBody> with TickerProviderStateMixin{
                   ),
                   Container(
                     width: double.maxFinite,
-                    height: _array.length * 60,
+                    height: restaurants.length * 60,
                     child: TabBarView(
                       controller: _tabController,
                       children: [
                         ListView.builder(
                           //physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
-                            itemCount: _array.length,
+                            itemCount: restaurants.length,
                             itemBuilder: (context,index){
                               return  ListTile(
                                 onTap: (){
@@ -104,27 +107,27 @@ class MyBodyState extends State<MyBody> with TickerProviderStateMixin{
                                       builder:
                                           (context) => CurrentBrand()));
                                 },
-                                title: Text('${_array[index]}'),
-                                leading: Image.asset("assets/images/2.jpg"),
-                                subtitle: Text('Ресторан'),
+                                title: Text('${restaurants[index]}'),
+                                leading: Image.asset(restImg[index], height:70, width:70),
+                                
                                 trailing: Icon(Icons.arrow_forward_ios_sharp,),
-                                isThreeLine: true,
+                                isThreeLine: false,
                               );
                             }),
                         ListView.builder(
                           //physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
-                            itemCount: _array.length,
+                            itemCount: shops.length,
                             itemBuilder: (context,index){
                               return  ListTile(
                                 onTap: (){
                                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => CurrentBrand()));
                                 },
-                                title: Text('${_array[index]}'),
-                                leading: Image.asset("assets/images/2.jpg"),
-                                subtitle: Text('Магазин'),
+                                title: Text('${shops[index]}'),
+                                leading: Image.asset(shopImg[index]),
+                              
                                 trailing: Icon(Icons.arrow_forward_ios_sharp,),
-                                isThreeLine: true,
+                                isThreeLine: false,
                               );
                             })
                       ],
