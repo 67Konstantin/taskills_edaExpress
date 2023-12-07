@@ -9,7 +9,6 @@ class CurrentBrandScreen extends StatefulWidget{
 
 class CurrentBrandScreenState extends State<CurrentBrandScreen> with TickerProviderStateMixin{
 
-  final List _array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   int index = 0;
 
   @override
@@ -39,37 +38,31 @@ class CurrentBrandScreenState extends State<CurrentBrandScreen> with TickerProvi
             ),
             Container(
               width: double.maxFinite,
-              height: _array.length * 60,
+              height: foodName.length * 60,
               child: TabBarView(
                 controller: _tabController,
                 children: [
                   ListView.builder(
                     //physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: _array.length,
+                      itemCount: foodName.length,
                       itemBuilder: (context,index){
                         return  ListTile(
-                          onTap: (){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => CurrentBrandScreen()));
-                          },
-                          title: Text('${_array[index]}'),
-                          leading: Image.asset("assets/png/2.jpg"),
-                          subtitle: Text('Выпечка'),
+                          title: Text('${foodName[index]}'),
+                          leading: Image.asset(foodImages[index], height: 40, width: 40,),
+                          subtitle: Text(foodPrice[index]),
                           isThreeLine: true,
                         );
                       }),
                   ListView.builder(
                     //physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: _array.length,
+                      itemCount: drinkName.length,
                       itemBuilder: (context,index){
                         return  ListTile(
-                          onTap: (){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => CurrentBrandScreen()));
-                          },
-                          title: Text('${_array[index]}'),
-                          leading: Image.asset("assets/png/2.jpg"),
-                          subtitle: Text('Напиток'),
+                          title: Text('${drinkName[index]}'),
+                          leading: Image.asset(drinkImages[index], height: 40, width: 40,),
+                          subtitle: Text(drinkPrice[index]),
                           isThreeLine: true,
                         );
                       })
