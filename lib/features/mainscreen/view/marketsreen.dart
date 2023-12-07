@@ -17,14 +17,11 @@ class MarketsScreenState extends State<MarketsScreen>
     TabController _tabController = TabController(length: 2, vsync: this);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-            "ЕдаExpress",
+        title: Text("ЕдаExpress",
             style: TextStyle(
                 fontSize: 18,
                 color: Colors.black,
-                decoration: TextDecoration.none
-            )
-        ),
+                decoration: TextDecoration.none)),
         backgroundColor: Colors.blueAccent,
       ),
       body: Center(
@@ -38,25 +35,25 @@ class MarketsScreenState extends State<MarketsScreen>
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Flexible(
-                      child: SizedBox(
-                        height: 200,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: restImg.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (_, index){
-                            return Container(
-                              height: 200,
-                              width: 200,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(restImg[index]),
-                                ),
+                    child: SizedBox(
+                      height: 200,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: restImg.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (_, index) {
+                          return Container(
+                            height: 200,
+                            width: 200,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(restImg[index]),
                               ),
-                            );
-                          },
-                        ),
+                            ),
+                          );
+                        },
                       ),
+                    ),
                   ),
                   Container(
                     child: TabBar(
@@ -82,43 +79,45 @@ class MarketsScreenState extends State<MarketsScreen>
                       controller: _tabController,
                       children: [
                         ListView.builder(
-                          //physics: NeverScrollableScrollPhysics(),
+                            //physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: restaurants.length,
-                            itemBuilder: (context,index){
-                              return  ListTile(
-                                onTap: (){
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder:
-                                          (context) => CurrentBrand()));
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                onTap: () {
+                                  AutoRouter.of(context)
+                                      .push(CurrentBrandRoute());Zz
                                 },
                                 title: Text('${restaurants[index]}'),
-                                leading: Image.asset(restImg[index], height:70, width:70),
-                                
-                                trailing: Icon(Icons.arrow_forward_ios_sharp,),
+                                leading: Image.asset(restImg[index],
+                                    height: 70, width: 70),
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios_sharp,
+                                ),
                                 isThreeLine: false,
                               );
                             }),
                         ListView.builder(
-                          //physics: NeverScrollableScrollPhysics(),
+                            //physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: shops.length,
-                            itemBuilder: (context,index){
-                              return  ListTile(
-                                onTap: (){
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => CurrentBrand()));
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => CurrentBrand()));
                                 },
                                 title: Text('${shops[index]}'),
                                 leading: Image.asset(shopImg[index]),
-                              
-                                trailing: Icon(Icons.arrow_forward_ios_sharp,),
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios_sharp,
+                                ),
                                 isThreeLine: false,
                               );
                             })
                       ],
                     ),
                   ),
-
                 ],
               ),
             ),
