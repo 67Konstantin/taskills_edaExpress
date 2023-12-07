@@ -53,6 +53,11 @@ class CurrentBrandScreenState extends State<CurrentBrandScreen> with TickerProvi
                           leading: Image.asset(MyVariables().foodImages[index], height: 40, width: 40,),
                           subtitle: Text(MyVariables().foodPrice[index]),
                           isThreeLine: true,
+                          onTap: (){
+                                  MyVariables().basketName.add(MyVariables().foodName);
+                                  MyVariables().basketPrice.add(MyVariables().foodPrice);
+                                  AutoRouter.of(context).push(ShopingScreenRoute());
+                                },
                         );
                       }),
                   ListView.builder(
@@ -65,6 +70,11 @@ class CurrentBrandScreenState extends State<CurrentBrandScreen> with TickerProvi
                           leading: Image.asset(MyVariables().drinkImages[index], height: 40, width: 40,),
                           subtitle: Text(MyVariables().drinkPrice[index]),
                           isThreeLine: true,
+                          onTap: (){
+                                  MyVariables().basketName.add(MyVariables().drinkName);
+                                  MyVariables().basketPrice.add(MyVariables().drinkPrice);
+                                  AutoRouter.of(context).push(ShopingScreenRoute());
+                                },
                         );
                       })
                 ],
