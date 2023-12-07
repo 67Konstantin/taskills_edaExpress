@@ -1,0 +1,1 @@
+export 'newpage.dart';
