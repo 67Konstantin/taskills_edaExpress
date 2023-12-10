@@ -82,6 +82,21 @@ class CurrentBrandScreenState extends State<CurrentBrandScreen>
           ),
           subtitle: Text(_getPrice(widget.shopName, index)),
           isThreeLine: true,
+          trailing: ButtonTheme(
+                      minWidth: 20.0,
+                      height: 20.0,
+                      child: ElevatedButton(
+                        onPressed: () => {
+                        MyVariables.basketName.add([items[index], 
+                          widget.shopName]),
+                        MyVariables.basketPrice.add(_getPrice(
+                          widget.shopName, index)),
+                        MyVariables.basketAllPrice += int.parse(_getPrice(
+                          widget.shopName, index).split(" ")[0]),
+                      },
+                      child: Icon(Icons.add),
+                      ),
+                    ),
         );
       },
     );
