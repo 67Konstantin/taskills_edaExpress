@@ -27,6 +27,16 @@ class MarketsScreenState extends State<MarketsScreen>
           ),
         ),
         backgroundColor: Colors.blueAccent,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            tooltip: 'Open shopping cart',
+            onPressed: () {
+              AutoRouter.of(context).push(ShopingRoute());
+              // handle the press
+            },
+          ),
+        ],
       ),
       body: CustomScrollView(
         slivers: [
