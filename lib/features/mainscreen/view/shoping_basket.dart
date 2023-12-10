@@ -25,23 +25,45 @@ class _ShopingScreenState extends State<ShopingScreen> {
       body: Center(
         child: ListView(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                  "Общая стоимость: " + MyVariables.basketAllPrice.toString(),
+                  style: TextStyle(fontSize: 20.0),
+                ),
+            ),
             Container(
               width: double.maxFinite,
-              height: MyVariables().basketName.length * 60,
+              height: MyVariables.basketName.length * 80,
               child: ListView.builder(
                     //physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: MyVariables().basketName.length,
+                      itemCount: MyVariables.basketName.length,
                       itemBuilder: (context,index){
                         return  ListTile(
-                          title: Text('${MyVariables().basketName[index]}'),
-                          //leading: Image.asset(foodImages[index], height: 40, width: 40,),
-                          subtitle: Text(MyVariables().basketPrice[index]),
+                          title: Text('${MyVariables.basketName[index][0]}'),
+                          //leading: Image.asset("assets/default_food_image.jpg", height: 40, width: 40,),
+                          subtitle: Text(
+                            MyVariables.basketName[index][1] + ", " + MyVariables.basketPrice[index]
+                          ),
                           isThreeLine: true,
+                          trailing: ButtonTheme(
+                                      minWidth: 20.0,
+                                      height: 20.0,
+                                      child: ElevatedButton(
+                                        onPressed: () => {
+                                          MyVariables.basketAllPrice -= int.parse(
+                                            MyVariables.basketPrice[index].split(" ")[0]
+                                          ),
+                                          MyVariables.basketPrice.removeAt(index),
+                                          MyVariables.basketName.removeAt(index),
+                                        },
+                                        child: Icon(Icons.remove),
+                                      ),
+                          ),
                         );
                       }),
             ),
-
           ],
         )
       ),
