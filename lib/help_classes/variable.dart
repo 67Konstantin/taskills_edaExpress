@@ -152,6 +152,8 @@ class MyVariables {
   String get defaultDrinkPrice => "0 руб";
 
 
-  final List basketName = [];
-  final List basketPrice = [];
+
+  static List basketName = [];
+  static List basketPrice = [];
+  static int basketAllPrice = 0;
 }
